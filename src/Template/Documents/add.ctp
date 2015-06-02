@@ -11,11 +11,13 @@
     <fieldset>
         <legend><?= __('Add Document') ?></legend>
         <?php
-            echo $this->Form->input('name');
-            echo $this->Form->input('dir');
-            echo $this->Form->input('ver');
+            echo $this->Form->create($document, ["type" => "file"]);
+            echo $this->Form->file("submittedfile");
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>
     <?= $this->Form->end() ?>
 </div>
+<?php
+    
+?>
