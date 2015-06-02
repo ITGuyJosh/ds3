@@ -46,8 +46,10 @@ class DocumentsController extends AppController
     public function add()
     {
         $document = $this->Documents->newEntity();
+        $tags = $this->Documents->DocumentTags->Tags->find("list");
+        
         if ($this->request->is('post')) {
-            $document = $this->Documents->patchEntity($document, $this->request->data);
+            $document = $this->Documents->patchEntity($document, $this->request->data);            
             if ($this->Documents->save($document)) {
                 $this->Flash->success(__('The document has been saved.'));
                 return $this->redirect(['action' => 'index']);
@@ -55,7 +57,7 @@ class DocumentsController extends AppController
                 $this->Flash->error(__('The document could not be saved. Please, try again.'));
             }
         }
-        $this->set(compact('document'));
+        $this->set(compact('document', "tags"));
         $this->set('_serialize', ['document']);
     }
 

@@ -13,6 +13,13 @@
         <?php
             echo $this->Form->create($document, ["type" => "file"]);
             echo $this->Form->file("submittedfile");
+            
+            echo $this->Form->label("Select Tags");
+            echo $this->Form->Select("tags", $tags, [
+                "multiple" => "checkbox",
+                "label" => "hi"
+                ]);
+            
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>
