@@ -4,8 +4,8 @@
         <li><?= $this->Html->link(__('New User Document'), ['action' => 'add']) ?></li>
         <li><?= $this->Html->link(__('List Users'), ['controller' => 'Users', 'action' => 'index']) ?></li>
         <li><?= $this->Html->link(__('New User'), ['controller' => 'Users', 'action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Documents'), ['controller' => 'Documents', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Document'), ['controller' => 'Documents', 'action' => 'add']) ?></li>
+        <li><?= $this->Html->link(__('List User Document Tags'), ['controller' => 'UserDocumentTags', 'action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__('New User Document Tag'), ['controller' => 'UserDocumentTags', 'action' => 'add']) ?></li>
     </ul>
 </div>
 <div class="userDocuments index large-10 medium-9 columns">
@@ -14,9 +14,11 @@
         <tr>
             <th><?= $this->Paginator->sort('id') ?></th>
             <th><?= $this->Paginator->sort('user_id') ?></th>
+            <th><?= $this->Paginator->sort('name') ?></th>
+            <th><?= $this->Paginator->sort('dir') ?></th>
+            <th><?= $this->Paginator->sort('ver') ?></th>
             <th><?= $this->Paginator->sort('document_id') ?></th>
             <th><?= $this->Paginator->sort('created') ?></th>
-            <th><?= $this->Paginator->sort('modified') ?></th>
             <th class="actions"><?= __('Actions') ?></th>
         </tr>
     </thead>
@@ -27,11 +29,11 @@
             <td>
                 <?= $userDocument->has('user') ? $this->Html->link($userDocument->user->id, ['controller' => 'Users', 'action' => 'view', $userDocument->user->id]) : '' ?>
             </td>
-            <td>
-                <?= $userDocument->has('document') ? $this->Html->link($userDocument->document->name, ['controller' => 'Documents', 'action' => 'view', $userDocument->document->id]) : '' ?>
-            </td>
+            <td><?= h($userDocument->name) ?></td>
+            <td><?= h($userDocument->dir) ?></td>
+            <td><?= $this->Number->format($userDocument->ver) ?></td>
+            <td><?= $this->Number->format($userDocument->document_id) ?></td>
             <td><?= h($userDocument->created) ?></td>
-            <td><?= h($userDocument->modified) ?></td>
             <td class="actions">
                 <?= $this->Html->link(__('View'), ['action' => 'view', $userDocument->id]) ?>
                 <?= $this->Html->link(__('Edit'), ['action' => 'edit', $userDocument->id]) ?>

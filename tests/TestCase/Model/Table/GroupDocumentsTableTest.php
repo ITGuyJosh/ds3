@@ -19,11 +19,7 @@ class GroupDocumentsTableTest extends TestCase
     public $fixtures = [
         'app.group_documents',
         'app.groups',
-        'app.users',
-        'app.roles',
-        'app.user_documents',
-        'app.documents',
-        'app.document_tags'
+        'app.group_document_tags'
     ];
 
     /**

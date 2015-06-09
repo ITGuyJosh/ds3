@@ -18,9 +18,12 @@ class GroupsControllerTest extends IntegrationTestCase
     public $fixtures = [
         'app.groups',
         'app.group_documents',
+        'app.group_document_tags',
+        'app.tags',
         'app.users',
-        'app.roles',
-        'app.user_documents'
+        'app.user_documents',
+        'app.documents',
+        'app.user_document_tags'
     ];
 
     /**

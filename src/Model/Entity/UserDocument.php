@@ -16,8 +16,12 @@ class UserDocument extends Entity
      */
     protected $_accessible = [
         'user_id' => true,
+        'name' => true,
+        'dir' => true,
+        'ver' => true,
         'document_id' => true,
         'user' => true,
         'document' => true,
+        'user_document_tags' => true,
     ];
 }

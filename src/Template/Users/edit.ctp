@@ -8,8 +8,6 @@
             )
         ?></li>
         <li><?= $this->Html->link(__('List Users'), ['action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('List Roles'), ['controller' => 'Roles', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Role'), ['controller' => 'Roles', 'action' => 'add']) ?></li>
         <li><?= $this->Html->link(__('List Groups'), ['controller' => 'Groups', 'action' => 'index']) ?></li>
         <li><?= $this->Html->link(__('New Group'), ['controller' => 'Groups', 'action' => 'add']) ?></li>
         <li><?= $this->Html->link(__('List User Documents'), ['controller' => 'UserDocuments', 'action' => 'index']) ?></li>
@@ -25,7 +23,7 @@
             echo $this->Form->input('email');
             echo $this->Form->input('company');
             echo $this->Form->input('password');
-            echo $this->Form->input('role_id', ['options' => $roles, 'empty' => true]);
+            echo $this->Form->input('role');
             echo $this->Form->input('group_id', ['options' => $groups, 'empty' => true]);
         ?>
     </fieldset>

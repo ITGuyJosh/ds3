@@ -4,8 +4,8 @@
         <li><?= $this->Html->link(__('List User Documents'), ['action' => 'index']) ?></li>
         <li><?= $this->Html->link(__('List Users'), ['controller' => 'Users', 'action' => 'index']) ?></li>
         <li><?= $this->Html->link(__('New User'), ['controller' => 'Users', 'action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Documents'), ['controller' => 'Documents', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Document'), ['controller' => 'Documents', 'action' => 'add']) ?></li>
+        <li><?= $this->Html->link(__('List User Document Tags'), ['controller' => 'UserDocumentTags', 'action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__('New User Document Tag'), ['controller' => 'UserDocumentTags', 'action' => 'add']) ?></li>
     </ul>
 </div>
 <div class="userDocuments form large-10 medium-9 columns">
@@ -14,7 +14,10 @@
         <legend><?= __('Add User Document') ?></legend>
         <?php
             echo $this->Form->input('user_id', ['options' => $users, 'empty' => true]);
-            echo $this->Form->input('document_id', ['options' => $documents, 'empty' => true]);
+            echo $this->Form->input('name');
+            echo $this->Form->input('dir');
+            echo $this->Form->input('ver');
+            echo $this->Form->input('document_id');
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>

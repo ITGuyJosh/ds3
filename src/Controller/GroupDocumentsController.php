@@ -19,7 +19,7 @@ class GroupDocumentsController extends AppController
     public function index()
     {
         $this->paginate = [
-            'contain' => ['Groups', 'Documents']
+            'contain' => ['Groups']
         ];
         $this->set('groupDocuments', $this->paginate($this->GroupDocuments));
         $this->set('_serialize', ['groupDocuments']);
@@ -35,7 +35,7 @@ class GroupDocumentsController extends AppController
     public function view($id = null)
     {
         $groupDocument = $this->GroupDocuments->get($id, [
-            'contain' => ['Groups', 'Documents']
+            'contain' => ['Groups', 'GroupDocumentTags']
         ]);
         $this->set('groupDocument', $groupDocument);
         $this->set('_serialize', ['groupDocument']);
@@ -59,8 +59,7 @@ class GroupDocumentsController extends AppController
             }
         }
         $groups = $this->GroupDocuments->Groups->find('list', ['limit' => 200]);
-        $documents = $this->GroupDocuments->Documents->find('list', ['limit' => 200]);
-        $this->set(compact('groupDocument', 'groups', 'documents'));
+        $this->set(compact('groupDocument', 'groups'));
         $this->set('_serialize', ['groupDocument']);
     }
 
@@ -86,8 +85,7 @@ class GroupDocumentsController extends AppController
             }
         }
         $groups = $this->GroupDocuments->Groups->find('list', ['limit' => 200]);
-        $documents = $this->GroupDocuments->Documents->find('list', ['limit' => 200]);
-        $this->set(compact('groupDocument', 'groups', 'documents'));
+        $this->set(compact('groupDocument', 'groups'));
         $this->set('_serialize', ['groupDocument']);
     }
 

@@ -1,14 +1,14 @@
 <?php
 namespace App\Test\TestCase\Model\Table;
 
-use App\Model\Table\DocumentTagsTable;
+use App\Model\Table\GroupDocumentTagsTable;
 use Cake\ORM\TableRegistry;
 use Cake\TestSuite\TestCase;
 
 /**
- * App\Model\Table\DocumentTagsTable Test Case
+ * App\Model\Table\GroupDocumentTagsTable Test Case
  */
-class DocumentTagsTableTest extends TestCase
+class GroupDocumentTagsTableTest extends TestCase
 {
 
     /**
@@ -17,8 +17,9 @@ class DocumentTagsTableTest extends TestCase
      * @var array
      */
     public $fixtures = [
-        'app.document_tags',
-        'app.documents',
+        'app.group_document_tags',
+        'app.group_documents',
+        'app.groups',
         'app.tags'
     ];
 
@@ -30,8 +31,8 @@ class DocumentTagsTableTest extends TestCase
     public function setUp()
     {
         parent::setUp();
-        $config = TableRegistry::exists('DocumentTags') ? [] : ['className' => 'App\Model\Table\DocumentTagsTable'];
-        $this->DocumentTags = TableRegistry::get('DocumentTags', $config);
+        $config = TableRegistry::exists('GroupDocumentTags') ? [] : ['className' => 'App\Model\Table\GroupDocumentTagsTable'];
+        $this->GroupDocumentTags = TableRegistry::get('GroupDocumentTags', $config);
     }
 
     /**
@@ -41,7 +42,7 @@ class DocumentTagsTableTest extends TestCase
      */
     public function tearDown()
     {
-        unset($this->DocumentTags);
+        unset($this->GroupDocumentTags);
 
         parent::tearDown();
     }

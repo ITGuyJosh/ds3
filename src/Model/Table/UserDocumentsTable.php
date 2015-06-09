@@ -12,6 +12,7 @@ use Cake\Validation\Validator;
  *
  * @property \Cake\ORM\Association\BelongsTo $Users
  * @property \Cake\ORM\Association\BelongsTo $Documents
+ * @property \Cake\ORM\Association\HasMany $UserDocumentTags
  */
 class UserDocumentsTable extends Table
 {
@@ -25,7 +26,7 @@ class UserDocumentsTable extends Table
     public function initialize(array $config)
     {
         $this->table('user_documents');
-        $this->displayField('id');
+        $this->displayField('name');
         $this->primaryKey('id');
         $this->addBehavior('Timestamp');
         $this->belongsTo('Users', [
@@ -33,6 +34,9 @@ class UserDocumentsTable extends Table
         ]);
         $this->belongsTo('Documents', [
             'foreignKey' => 'document_id'
+        ]);
+        $this->hasMany('UserDocumentTags', [
+            'foreignKey' => 'user_document_id'
         ]);
     }
 
@@ -47,6 +51,16 @@ class UserDocumentsTable extends Table
         $validator
             ->add('id', 'valid', ['rule' => 'numeric'])
             ->allowEmpty('id', 'create');
+            
+        $validator
+            ->allowEmpty('name');
+            
+        $validator
+            ->allowEmpty('dir');
+            
+        $validator
+            ->add('ver', 'valid', ['rule' => 'numeric'])
+            ->allowEmpty('ver');
 
         return $validator;
     }

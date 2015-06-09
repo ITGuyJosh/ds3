@@ -38,5 +38,23 @@ class AppController extends Controller
     {
         parent::initialize();
         $this->loadComponent('Flash');
+        $this->loadComponent("Auth", [
+            "authenticate" => [
+                "Form" => [
+                    "fields" => [
+                        "username" => "email",
+                        "password" => "password"
+                    ]
+                ]
+            ],
+            "loginAction" => [
+                "controller" => "Users",
+                "action" => "login"
+            ]
+        ]);
+        
+        //temp auth all allowed
+        $this->Auth->allow("login");
     }
+    
 }

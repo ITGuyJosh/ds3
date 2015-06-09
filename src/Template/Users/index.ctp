@@ -2,8 +2,6 @@
     <h3><?= __('Actions') ?></h3>
     <ul class="side-nav">
         <li><?= $this->Html->link(__('New User'), ['action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Roles'), ['controller' => 'Roles', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Role'), ['controller' => 'Roles', 'action' => 'add']) ?></li>
         <li><?= $this->Html->link(__('List Groups'), ['controller' => 'Groups', 'action' => 'index']) ?></li>
         <li><?= $this->Html->link(__('New Group'), ['controller' => 'Groups', 'action' => 'add']) ?></li>
         <li><?= $this->Html->link(__('List User Documents'), ['controller' => 'UserDocuments', 'action' => 'index']) ?></li>
@@ -19,7 +17,7 @@
             <th><?= $this->Paginator->sort('email') ?></th>
             <th><?= $this->Paginator->sort('company') ?></th>
             <th><?= $this->Paginator->sort('password') ?></th>
-            <th><?= $this->Paginator->sort('role_id') ?></th>
+            <th><?= $this->Paginator->sort('role') ?></th>
             <th><?= $this->Paginator->sort('group_id') ?></th>
             <th class="actions"><?= __('Actions') ?></th>
         </tr>
@@ -32,9 +30,7 @@
             <td><?= h($user->email) ?></td>
             <td><?= h($user->company) ?></td>
             <td><?= h($user->password) ?></td>
-            <td>
-                <?= $user->has('role') ? $this->Html->link($user->role->name, ['controller' => 'Roles', 'action' => 'view', $user->role->id]) : '' ?>
-            </td>
+            <td><?= h($user->role) ?></td>
             <td>
                 <?= $user->has('group') ? $this->Html->link($user->group->name, ['controller' => 'Groups', 'action' => 'view', $user->group->id]) : '' ?>
             </td>

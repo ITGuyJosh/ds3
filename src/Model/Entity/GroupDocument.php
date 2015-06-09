@@ -16,8 +16,10 @@ class GroupDocument extends Entity
      */
     protected $_accessible = [
         'group_id' => true,
-        'document_id' => true,
+        'name' => true,
+        'dir' => true,
+        'ver' => true,
         'group' => true,
-        'document' => true,
+        'group_document_tags' => true,
     ];
 }

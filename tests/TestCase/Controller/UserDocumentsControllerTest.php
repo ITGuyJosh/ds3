@@ -18,12 +18,9 @@ class UserDocumentsControllerTest extends IntegrationTestCase
     public $fixtures = [
         'app.user_documents',
         'app.users',
-        'app.roles',
         'app.groups',
-        'app.group_documents',
         'app.documents',
-        'app.document_tags',
-        'app.tags'
+        'app.user_document_tags'
     ];
 
     /**

@@ -5,8 +5,6 @@
         <li><?= $this->Form->postLink(__('Delete User'), ['action' => 'delete', $user->id], ['confirm' => __('Are you sure you want to delete # {0}?', $user->id)]) ?> </li>
         <li><?= $this->Html->link(__('List Users'), ['action' => 'index']) ?> </li>
         <li><?= $this->Html->link(__('New User'), ['action' => 'add']) ?> </li>
-        <li><?= $this->Html->link(__('List Roles'), ['controller' => 'Roles', 'action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Role'), ['controller' => 'Roles', 'action' => 'add']) ?> </li>
         <li><?= $this->Html->link(__('List Groups'), ['controller' => 'Groups', 'action' => 'index']) ?> </li>
         <li><?= $this->Html->link(__('New Group'), ['controller' => 'Groups', 'action' => 'add']) ?> </li>
         <li><?= $this->Html->link(__('List User Documents'), ['controller' => 'UserDocuments', 'action' => 'index']) ?> </li>
@@ -26,7 +24,7 @@
             <h6 class="subheader"><?= __('Password') ?></h6>
             <p><?= h($user->password) ?></p>
             <h6 class="subheader"><?= __('Role') ?></h6>
-            <p><?= $user->has('role') ? $this->Html->link($user->role->name, ['controller' => 'Roles', 'action' => 'view', $user->role->id]) : '' ?></p>
+            <p><?= h($user->role) ?></p>
             <h6 class="subheader"><?= __('Group') ?></h6>
             <p><?= $user->has('group') ? $this->Html->link($user->group->name, ['controller' => 'Groups', 'action' => 'view', $user->group->id]) : '' ?></p>
         </div>
@@ -50,6 +48,9 @@
         <tr>
             <th><?= __('Id') ?></th>
             <th><?= __('User Id') ?></th>
+            <th><?= __('Name') ?></th>
+            <th><?= __('Dir') ?></th>
+            <th><?= __('Ver') ?></th>
             <th><?= __('Document Id') ?></th>
             <th><?= __('Created') ?></th>
             <th><?= __('Modified') ?></th>
@@ -59,6 +60,9 @@
         <tr>
             <td><?= h($userDocuments->id) ?></td>
             <td><?= h($userDocuments->user_id) ?></td>
+            <td><?= h($userDocuments->name) ?></td>
+            <td><?= h($userDocuments->dir) ?></td>
+            <td><?= h($userDocuments->ver) ?></td>
             <td><?= h($userDocuments->document_id) ?></td>
             <td><?= h($userDocuments->created) ?></td>
             <td><?= h($userDocuments->modified) ?></td>

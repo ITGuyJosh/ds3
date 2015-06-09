@@ -11,7 +11,7 @@ use Cake\Validation\Validator;
  * GroupDocuments Model
  *
  * @property \Cake\ORM\Association\BelongsTo $Groups
- * @property \Cake\ORM\Association\BelongsTo $Documents
+ * @property \Cake\ORM\Association\HasMany $GroupDocumentTags
  */
 class GroupDocumentsTable extends Table
 {
@@ -25,14 +25,14 @@ class GroupDocumentsTable extends Table
     public function initialize(array $config)
     {
         $this->table('group_documents');
-        $this->displayField('id');
+        $this->displayField('name');
         $this->primaryKey('id');
         $this->addBehavior('Timestamp');
         $this->belongsTo('Groups', [
             'foreignKey' => 'group_id'
         ]);
-        $this->belongsTo('Documents', [
-            'foreignKey' => 'document_id'
+        $this->hasMany('GroupDocumentTags', [
+            'foreignKey' => 'group_document_id'
         ]);
     }
 
@@ -47,6 +47,16 @@ class GroupDocumentsTable extends Table
         $validator
             ->add('id', 'valid', ['rule' => 'numeric'])
             ->allowEmpty('id', 'create');
+            
+        $validator
+            ->allowEmpty('name');
+            
+        $validator
+            ->allowEmpty('dir');
+            
+        $validator
+            ->add('ver', 'valid', ['rule' => 'numeric'])
+            ->allowEmpty('ver');
 
         return $validator;
     }
@@ -61,7 +71,6 @@ class GroupDocumentsTable extends Table
     public function buildRules(RulesChecker $rules)
     {
         $rules->add($rules->existsIn(['group_id'], 'Groups'));
-        $rules->add($rules->existsIn(['document_id'], 'Documents'));
         return $rules;
     }
 }

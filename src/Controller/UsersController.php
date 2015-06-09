@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Controller;
 
 use App\Controller\AppController;
@@ -8,18 +9,16 @@ use App\Controller\AppController;
  *
  * @property \App\Model\Table\UsersTable $Users
  */
-class UsersController extends AppController
-{
+class UsersController extends AppController {
 
     /**
      * Index method
      *
      * @return void
      */
-    public function index()
-    {
+    public function index() {
         $this->paginate = [
-            'contain' => ['Roles', 'Groups']
+            'contain' => ['Groups']
         ];
         $this->set('users', $this->paginate($this->Users));
         $this->set('_serialize', ['users']);
@@ -32,10 +31,9 @@ class UsersController extends AppController
      * @return void
      * @throws \Cake\Network\Exception\NotFoundException When record not found.
      */
-    public function view($id = null)
-    {
+    public function view($id = null) {
         $user = $this->Users->get($id, [
-            'contain' => ['Roles', 'Groups', 'UserDocuments']
+            'contain' => ['Groups', 'UserDocuments']
         ]);
         $this->set('user', $user);
         $this->set('_serialize', ['user']);
@@ -46,8 +44,7 @@ class UsersController extends AppController
      *
      * @return void Redirects on successful add, renders view otherwise.
      */
-    public function add()
-    {
+    public function add() {
         $user = $this->Users->newEntity();
         if ($this->request->is('post')) {
             $user = $this->Users->patchEntity($user, $this->request->data);
@@ -58,9 +55,8 @@ class UsersController extends AppController
                 $this->Flash->error(__('The user could not be saved. Please, try again.'));
             }
         }
-        $roles = $this->Users->Roles->find('list', ['limit' => 200]);
         $groups = $this->Users->Groups->find('list', ['limit' => 200]);
-        $this->set(compact('user', 'roles', 'groups'));
+        $this->set(compact('user', 'groups'));
         $this->set('_serialize', ['user']);
     }
 
@@ -71,8 +67,7 @@ class UsersController extends AppController
      * @return void Redirects on successful edit, renders view otherwise.
      * @throws \Cake\Network\Exception\NotFoundException When record not found.
      */
-    public function edit($id = null)
-    {
+    public function edit($id = null) {
         $user = $this->Users->get($id, [
             'contain' => []
         ]);
@@ -85,9 +80,8 @@ class UsersController extends AppController
                 $this->Flash->error(__('The user could not be saved. Please, try again.'));
             }
         }
-        $roles = $this->Users->Roles->find('list', ['limit' => 200]);
         $groups = $this->Users->Groups->find('list', ['limit' => 200]);
-        $this->set(compact('user', 'roles', 'groups'));
+        $this->set(compact('user', 'groups'));
         $this->set('_serialize', ['user']);
     }
 
@@ -98,8 +92,7 @@ class UsersController extends AppController
      * @return void Redirects to index.
      * @throws \Cake\Network\Exception\NotFoundException When record not found.
      */
-    public function delete($id = null)
-    {
+    public function delete($id = null) {
         $this->request->allowMethod(['post', 'delete']);
         $user = $this->Users->get($id);
         if ($this->Users->delete($user)) {
@@ -109,4 +102,24 @@ class UsersController extends AppController
         }
         return $this->redirect(['action' => 'index']);
     }
+    
+    public function login(){
+        if($this->request->is("post")){
+            //get user details based on their login
+            $user = $this->Auth->identify();
+            if($user){
+                //set user as the logged in session user
+                $this->Auth->setUser($user);
+                //redirect user - to their entered url initially
+                return $this->redirect($this->Auth->redirectUrl());
+            }
+            $this->Flash->error("Your username or password is incorrect.");
+        }
+    }
+    
+    public function logout(){
+        $this->Flash->success('You are now logged out.');
+        return $this->redirect($this->Auth->logout());
+    }
+    
 }

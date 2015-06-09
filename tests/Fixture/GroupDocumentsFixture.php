@@ -19,7 +19,9 @@ class GroupDocumentsFixture extends TestFixture
     public $fields = [
         'id' => ['type' => 'integer', 'length' => 11, 'unsigned' => false, 'null' => false, 'default' => null, 'comment' => '', 'autoIncrement' => true, 'precision' => null],
         'group_id' => ['type' => 'integer', 'length' => 11, 'unsigned' => false, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
-        'document_id' => ['type' => 'integer', 'length' => 11, 'unsigned' => false, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
+        'name' => ['type' => 'string', 'length' => 255, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null, 'fixed' => null],
+        'dir' => ['type' => 'string', 'length' => 255, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null, 'fixed' => null],
+        'ver' => ['type' => 'integer', 'length' => 11, 'unsigned' => false, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
         'created' => ['type' => 'datetime', 'length' => null, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null],
         'modified' => ['type' => 'datetime', 'length' => null, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null],
         '_constraints' => [
@@ -41,9 +43,11 @@ class GroupDocumentsFixture extends TestFixture
         [
             'id' => 1,
             'group_id' => 1,
-            'document_id' => 1,
-            'created' => '2015-06-02 13:35:01',
-            'modified' => '2015-06-02 13:35:01'
+            'name' => 'Lorem ipsum dolor sit amet',
+            'dir' => 'Lorem ipsum dolor sit amet',
+            'ver' => 1,
+            'created' => '2015-06-09 09:09:07',
+            'modified' => '2015-06-09 09:09:07'
         ],
     ];
 }

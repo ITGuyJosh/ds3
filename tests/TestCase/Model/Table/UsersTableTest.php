@@ -18,7 +18,6 @@ class UsersTableTest extends TestCase
      */
     public $fixtures = [
         'app.users',
-        'app.roles',
         'app.groups',
         'app.user_documents'
     ];

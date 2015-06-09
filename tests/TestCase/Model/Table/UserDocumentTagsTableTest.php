@@ -1,14 +1,14 @@
 <?php
 namespace App\Test\TestCase\Model\Table;
 
-use App\Model\Table\RolesTable;
+use App\Model\Table\UserDocumentTagsTable;
 use Cake\ORM\TableRegistry;
 use Cake\TestSuite\TestCase;
 
 /**
- * App\Model\Table\RolesTable Test Case
+ * App\Model\Table\UserDocumentTagsTable Test Case
  */
-class RolesTableTest extends TestCase
+class UserDocumentTagsTableTest extends TestCase
 {
 
     /**
@@ -17,11 +17,12 @@ class RolesTableTest extends TestCase
      * @var array
      */
     public $fixtures = [
-        'app.roles',
+        'app.user_document_tags',
+        'app.user_documents',
         'app.users',
         'app.groups',
-        'app.group_documents',
-        'app.user_documents'
+        'app.documents',
+        'app.tags'
     ];
 
     /**
@@ -32,8 +33,8 @@ class RolesTableTest extends TestCase
     public function setUp()
     {
         parent::setUp();
-        $config = TableRegistry::exists('Roles') ? [] : ['className' => 'App\Model\Table\RolesTable'];
-        $this->Roles = TableRegistry::get('Roles', $config);
+        $config = TableRegistry::exists('UserDocumentTags') ? [] : ['className' => 'App\Model\Table\UserDocumentTagsTable'];
+        $this->UserDocumentTags = TableRegistry::get('UserDocumentTags', $config);
     }
 
     /**
@@ -43,7 +44,7 @@ class RolesTableTest extends TestCase
      */
     public function tearDown()
     {
-        unset($this->Roles);
+        unset($this->UserDocumentTags);
 
         parent::tearDown();
     }
@@ -64,6 +65,16 @@ class RolesTableTest extends TestCase
      * @return void
      */
     public function testValidationDefault()
+    {
+        $this->markTestIncomplete('Not implemented yet.');
+    }
+
+    /**
+     * Test buildRules method
+     *
+     * @return void
+     */
+    public function testBuildRules()
     {
         $this->markTestIncomplete('Not implemented yet.');
     }

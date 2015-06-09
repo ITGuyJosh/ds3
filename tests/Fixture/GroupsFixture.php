@@ -42,8 +42,8 @@ class GroupsFixture extends TestFixture
             'id' => 1,
             'name' => 'Lorem ipsum dolor sit amet',
             'description' => 'Lorem ipsum dolor sit amet',
-            'created' => '2015-06-02 13:34:49',
-            'modified' => '2015-06-02 13:34:49'
+            'created' => '2015-06-09 09:09:37',
+            'modified' => '2015-06-09 09:09:37'
         ],
     ];
 }

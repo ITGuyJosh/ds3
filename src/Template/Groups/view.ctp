@@ -40,7 +40,9 @@
         <tr>
             <th><?= __('Id') ?></th>
             <th><?= __('Group Id') ?></th>
-            <th><?= __('Document Id') ?></th>
+            <th><?= __('Name') ?></th>
+            <th><?= __('Dir') ?></th>
+            <th><?= __('Ver') ?></th>
             <th><?= __('Created') ?></th>
             <th><?= __('Modified') ?></th>
             <th class="actions"><?= __('Actions') ?></th>
@@ -49,7 +51,9 @@
         <tr>
             <td><?= h($groupDocuments->id) ?></td>
             <td><?= h($groupDocuments->group_id) ?></td>
-            <td><?= h($groupDocuments->document_id) ?></td>
+            <td><?= h($groupDocuments->name) ?></td>
+            <td><?= h($groupDocuments->dir) ?></td>
+            <td><?= h($groupDocuments->ver) ?></td>
             <td><?= h($groupDocuments->created) ?></td>
             <td><?= h($groupDocuments->modified) ?></td>
 
@@ -79,7 +83,7 @@
             <th><?= __('Email') ?></th>
             <th><?= __('Company') ?></th>
             <th><?= __('Password') ?></th>
-            <th><?= __('Role Id') ?></th>
+            <th><?= __('Role') ?></th>
             <th><?= __('Group Id') ?></th>
             <th><?= __('Created') ?></th>
             <th><?= __('Modified') ?></th>
@@ -92,7 +96,7 @@
             <td><?= h($users->email) ?></td>
             <td><?= h($users->company) ?></td>
             <td><?= h($users->password) ?></td>
-            <td><?= h($users->role_id) ?></td>
+            <td><?= h($users->role) ?></td>
             <td><?= h($users->group_id) ?></td>
             <td><?= h($users->created) ?></td>
             <td><?= h($users->modified) ?></td>

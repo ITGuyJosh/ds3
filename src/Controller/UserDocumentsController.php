@@ -35,7 +35,7 @@ class UserDocumentsController extends AppController
     public function view($id = null)
     {
         $userDocument = $this->UserDocuments->get($id, [
-            'contain' => ['Users', 'Documents']
+            'contain' => ['Users', 'Documents', 'UserDocumentTags']
         ]);
         $this->set('userDocument', $userDocument);
         $this->set('_serialize', ['userDocument']);

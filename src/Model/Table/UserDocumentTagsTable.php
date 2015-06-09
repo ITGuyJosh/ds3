@@ -1,19 +1,19 @@
 <?php
 namespace App\Model\Table;
 
-use App\Model\Entity\DocumentTag;
+use App\Model\Entity\UserDocumentTag;
 use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
 
 /**
- * DocumentTags Model
+ * UserDocumentTags Model
  *
- * @property \Cake\ORM\Association\BelongsTo $Documents
+ * @property \Cake\ORM\Association\BelongsTo $UserDocuments
  * @property \Cake\ORM\Association\BelongsTo $Tags
  */
-class DocumentTagsTable extends Table
+class UserDocumentTagsTable extends Table
 {
 
     /**
@@ -24,12 +24,12 @@ class DocumentTagsTable extends Table
      */
     public function initialize(array $config)
     {
-        $this->table('document_tags');
+        $this->table('user_document_tags');
         $this->displayField('id');
         $this->primaryKey('id');
         $this->addBehavior('Timestamp');
-        $this->belongsTo('Documents', [
-            'foreignKey' => 'document_id'
+        $this->belongsTo('UserDocuments', [
+            'foreignKey' => 'user_document_id'
         ]);
         $this->belongsTo('Tags', [
             'foreignKey' => 'tag_id'
@@ -60,7 +60,7 @@ class DocumentTagsTable extends Table
      */
     public function buildRules(RulesChecker $rules)
     {
-        $rules->add($rules->existsIn(['document_id'], 'Documents'));
+        $rules->add($rules->existsIn(['user_document_id'], 'UserDocuments'));
         $rules->add($rules->existsIn(['tag_id'], 'Tags'));
         return $rules;
     }

@@ -4,9 +4,9 @@ namespace App\Model\Entity;
 use Cake\ORM\Entity;
 
 /**
- * Document Entity.
+ * UserDocumentTag Entity.
  */
-class Document extends Entity
+class UserDocumentTag extends Entity
 {
 
     /**
@@ -15,9 +15,9 @@ class Document extends Entity
      * @var array
      */
     protected $_accessible = [
-        'name' => true,
-        'dir' => true,
-        'ver' => true,
-        'document_tags' => true,
+        'user_document_id' => true,
+        'tag_id' => true,
+        'user_document' => true,
+        'tag' => true,
     ];
 }
